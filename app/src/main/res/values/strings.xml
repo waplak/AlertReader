@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Alert Reader</string>
+    <string name="alert">My Alert</string>
+</resources>
