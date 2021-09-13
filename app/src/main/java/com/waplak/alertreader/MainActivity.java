@@ -1,15 +1,19 @@
 package com.waplak.alertreader;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -47,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         instance = this;
+        // Define ActionBar object
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        //actionBar.hide();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#FF6200EE"));
+        actionBar.setBackgroundDrawable(colorDrawable);
 
         checkAndRequestPermissions();
         alertList = refreshInbox();
@@ -57,26 +68,7 @@ public class MainActivity extends AppCompatActivity {
         lvSMS.setAdapter(alertListViewAdapter);
 
     }
-    @Override
-    public boolean onCreateOptionsMenu( Menu menu ) {
 
-        getMenuInflater().inflate(R.menu.alert_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected( @NonNull MenuItem item ) {
-
-        switch (item.getItemId()){
-            case R.id.refresh:
-                ArrayList<Alert> alertList = refreshInbox();
-                alertListViewAdapter = new AlertListViewAdapter(alertList);
-                lvSMS.setAdapter(alertListViewAdapter);
-                alertListViewAdapter.notifyDataSetChanged();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
     private  boolean checkAndRequestPermissions() {
         int permissionReadMessage = ContextCompat.checkSelfPermission(this,Manifest.permission.READ_SMS);
         int permissionReadContacts = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);

@@ -45,7 +45,6 @@ class AlertListViewAdapter extends BaseAdapter {
         Alert alert = (Alert) getItem(position);
         ((TextView) viewAlert.findViewById(R.id.contact_name)).setText(alert.getContactName());
         ((TextView) viewAlert.findViewById(R.id.date_time)).setText(alert.getDateTime());
-        //((TextView) viewAlert.findViewById(R.id.count_alert)).setText("Alert count :"+alert.getCount()+"");
         ImageButton callBackBt = viewAlert.findViewById(R.id.call_back);
         callBackBt.setOnClickListener(new View.OnClickListener() {
             @Override

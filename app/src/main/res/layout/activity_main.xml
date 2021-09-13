@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/bk_color"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp"
         tools:ignore="MissingConstraints">
@@ -23,11 +24,13 @@
             <ListView
                 android:id="@+id/lv_sms"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:divider="#b5b5b5"
-                android:dividerHeight="1dp"
-                android:listSelector="@drawable/list_selector" />
+                android:layout_height="wrap_content"/>
         </LinearLayout>
-
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/lv_sms"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:scrollbarStyle="outsideOverlay"/>-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
